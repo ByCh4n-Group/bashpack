@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: bashpack.me
+Token: caaa7d6e0937a4bcba16e56d9414f74f5fcd98e7e03434695fa7514f89497b31
