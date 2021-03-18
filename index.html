@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>    
+<head>
+	<meta charset="utf-8">
+	<title>bashpack</title>
+	<link rel="shortcut icon" href="favicon.png">
+	<meta content="Bashpack is an open-source package manager allowing you to download, update, and host your projects and open-source script written in bash." name="description">
+	<meta content="Hadrien Aka" name="author">
+	<meta content="bashpack, bash, package, manager" name="keywords">
+	<meta content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+	<link href="style.css" media="all" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700" rel="stylesheet" type="text/css">
+	<script src="https://kit.fontawesome.com/94328b3667.js" crossorigin="anonymous"></script>
+</head>
+
+<header>
+	<div id="menu">
+		<button class="lines-button minus menu-toggle" id="main-menu-caller" type="button"><span class="lines"></span></button>
+	</div>
+	<nav>
+		<div id="ui-layer">
+		<div id="menu-wrapper">
+		<div id="main-menu">
+		<div class="menu-nav-wrapper">
+			<nav class="menu-nav">
+				<ul class="brackets">
+					
+					<li class="menu">
+						<a href="#" onclick="window.location='index.html#bashpack'">bashpack?</a>
+					</li>
+					<li class="menu">
+						<a href="#" onclick="window.location='index.html#install'">install</a>
+					</li>
+					<li class="menu">
+						<a href="#" onclick="window.location='pckg.html'">pckg</a>
+					</li>
+					<li class="menu">
+						<a href="#" onclick="window.location='upload-pckg.html'">upload pckg</a>
+					</li>					
+					<li class="menu">
+						<a href="#" onclick="window.location='donate.html'">donate</a>
+					</li>
+					<li class="menu credits">
+						<a href="#" onclick="window.location='https://hadrienaka.fr'">&copy;2020. By Hadrien Aka</a>
+					</li>
+					
+				</ul>
+			</nav>
+		</div>
+		</div>
+		</div>
+		</div>
+	</nav>
+
+	<div class="social-icons-wrapper bottom-position">
+		<ul class="social-icons">
+			<li><a class="fa fa-github" href="https://github.com/hadrienaka"></a></li>
+		</ul>
+	</div>
+
+	<div id="home">
+		<div class="container">
+			<div class="padding-top1"></div>
+			<h1 class="title"><mark><div class="text"></div></mark></h1>
+			<div class="padding-top3"></div>
+			<h2>A simple <span>package manager</span>,<br>written in <span>bash</span>, <br>and made for <span>bash</span>.</h2>
+			<div class="padding-top3"></div>
+			<hr style="margin: auto;" class="hr-sm">
+		</div>
+	</div>
+
+	<section id="godown" class="godowna">
+		<a href="#bashpack"><span></span></a>
+	</section>
+
+</header>
+
+<body>
+
+	<div id="bashpack"></div>
+	<div class="container">
+		<div class="padding-top4"></div>
+		<div class="text-center">
+			
+			<div class="multi-button">
+				<button onclick="window.location.href='upload-pckg.html'">Submit Pckg</button>
+				<button onclick="window.location.href='pckg.html';">Search Pckg</button>             
+			</div>
+			
+			<div id="install"></div>
+			<div class="padding-top7"></div>
+
+			<h3>Install <span>bashpack</span> :</h3>
+			<div class="padding-top6"></div><div class="hr-sm"></div><div class="padding-top6"></div>
+			<p>Simply past this line in your MacOs terminal or linux shell :</p>
+			<div class="padding-top4"></div>
+			<code><pre>  $  /bin/bash -c "$(curl -fsSL https://bashpack.me/install/install.sh)"</pre></code>
+			<div class="multi-button btns">
+				<button>$Copy</button>
+			</div>
+
+			<div class="padding-top7"></div>
+
+			<h3>What does <span>bashpack</span> do ?</h3>
+			<div class="padding-top6"></div><div class="hr-sm"></div><div class="padding-top6"></div>
+			<p>Bashpack is an open-source package manager allowing you to download, update, and host your projects and open-source script written in bash.</p>
+			
+			<div class="padding-top7"></div>
+
+			<h3>How it <span>works</span> ?</h3>
+			<div class="padding-top6"></div><div class="hr-sm"></div><div class="padding-top6"></div>
+			<p><code class="code">bashpack [args] [Pckg Name]</code><br><br></p>
+
+			<code><pre style="text-align: left;"> bashpack -i $pckg-name # Install a pckg
+ bashpack -d $pckg-name # Delete a pckg
+ bashpack -u $pckg-name # Check/Update
+ bashpack -s $pckg-name # Get info
+ bashpack -h            # Show Help</pre></code>
+
+			<div class="padding-top7"></div>
+		</div>
+	</div>
+
+	<script src="js/jquery-1.11.3.min.js" type="text/javascript"></script> 
+	<script src="js/plugins.js" type="text/javascript"></script> 
+	<script src="js/myjs.js" type="text/javascript"></script>
+</body>
+</html>

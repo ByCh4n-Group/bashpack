@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>    
+<head>
+	<meta charset="utf-8">
+	<title>bashpack > Submit Pckg</title>
+	<link rel="shortcut icon" href="favicon.png">
+	<meta content="You can upload your own bash scripts to expand our collection. Once your script is verified, it will be added to the page and can be downloaded by anyone." name="description">
+	<meta content="Hadrien Aka" name="author">
+	<meta content="bashpack, bash, package, manager" name="keywords">
+	<meta content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+	<link href="style.css" media="all" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900%7CDosis:200,300,400,500,600,700,800%7COswald:300,400,700%7CMontserrat:400,700" rel="stylesheet" type="text/css">
+	<script src="https://kit.fontawesome.com/94328b3667.js" crossorigin="anonymous"></script>
+</head>
+
+	<div id="menu">
+		<button class="lines-button minus menu-toggle" id="main-menu-caller" type="button"><span class="lines"></span></button>
+	</div>
+	<nav>
+		<div id="ui-layer">
+		<div id="menu-wrapper">
+		<div id="main-menu">
+		<div class="menu-nav-wrapper">
+			<nav class="menu-nav">
+				<ul class="brackets">
+					
+					<li class="menu">
+						<a href="#" onclick="window.location='index.html#bashpack'">bashpack?</a>
+					</li>
+					<li class="menu">
+						<a href="#" onclick="window.location='index.html#install'">install</a>
+					</li>
+					<li class="menu">
+						<a href="#" onclick="window.location='pckg.html'">pckg</a>
+					</li>
+					<li class="menu">
+						<a href="#" onclick="window.location='upload-pckg.html'">upload pckg</a>
+					</li>					
+					<li class="menu">
+						<a href="#" onclick="window.location='donate.html'">donate</a>
+					</li>
+					<li class="menu credits">
+						<a href="#" onclick="window.location='https://hadrienaka.fr'">&copy;2020. By Hadrien Aka</a>
+					</li>
+					
+				</ul>
+			</nav>
+		</div>
+		</div>
+		</div>
+		</div>
+	</nav>
+	
+	<div class="social-icons-wrapper bottom-position">
+		<ul class="social-icons">
+			<li><a class="fa fa-github" href="https://github.com/hadrienaka"></a></li>
+		</ul>
+	</div>
+
+
+<body>
+	<div class="padding-top5"></div>
+	<div class="container">
+		<div class="text-center">
+			<h2><span>(งツ)ว</span></h2>
+			<h3><br>Submit your <span>.sh</span></h3>
+			<div class="padding-top6"></div><div class="hr-sm"></div><div class="padding-top6"></div>
+			<p>You can upload your own bash scripts to expand our collection. Once your script is verified, it will be added to the <a href="pckg.html">#package</a> page and can could be downloaded by anyone. <br><br>(If your script needs dependencies, specify it in $description and explain what it is used for. Create a .zip with all the files. )</p>
+		</div>
+	</div>
+	<div class="padding-top2"></div>
+
+	<div class="form-continer">
+		<form name="contact" action="/success.html" data-netlify="true">
+
+			<div class="group">      
+				<input name="username" type="text" autocomplete="off" required>
+				<span class="bar"></span>
+				<label>$username</label>
+			</div>
+
+			<div class="group">      
+				<input name="email" type="text" autocomplete="off" required>
+				<span class="bar"></span>
+				<label>$email</label>
+			</div>
+
+			<div class="group">      
+				<input name="pckgname" type="text" autocomplete="off" required>
+				<span class="bar"></span>
+				<label>$pckg-name</label>
+			</div>
+
+			<div class="group">      
+				<textarea name="description" type="text" autocomplete="off" required></textarea>
+				<span class="bar"></span>
+				<label>$description</label>
+			</div>
+
+			<div class="group">      
+				<div class="file-upload">
+					<div class="image-upload-wrap">
+						<input name="file" class="file-upload-input" type='file' onchange="readURL(this);" required>
+						<div class="drag-text">
+						<h3>Drag&drop or Click for browse</h3>
+						</div>
+					</div>
+					<div class="file-upload-content">
+						<div class="image-title-wrap">
+						<button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title"></span></button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="text-center multi-button">
+				<button type="submit">Send</button>
+			</div>
+		</form>
+	</div>
+
+	<div class="padding-top2"></div>
+	<script src="js/jquery-1.11.3.min.js" type="text/javascript"></script> 
+	<script src="js/plugins.js" type="text/javascript"></script> 
+	<script src="js/dragdrop.js" type="text/javascript"></script> 
+</body>
+</html>
