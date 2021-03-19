@@ -26,8 +26,34 @@
 			<div class="padding-top3"></div>
 			<h4 class="hey"><br>You can donate directly from your <span>brave browser</span> or use the <span>crypto</span> addresses below</h4>
 				<div class="padding-top3"></div>
-				<h3><span>Bitcoin</span> : <code class="code">18dWgrjJrViK96x1DjQfkRNTfYRhuWfshd</code>
-				<br><span>Ether</span> : <code class="code">0x5fEd61885108e2C8C6d5EAd7880E23aFb002595F</code></h3>
+
+				<script>
+					function copyBitcoin() {
+						const copyText = document.getElementById("bitcoin").textContent;
+						const textArea = document.createElement('textarea');
+						textArea.textContent = copyText;
+						document.body.append(textArea);
+						textArea.select();
+						document.execCommand("copy");
+						textArea.remove();
+					}
+					function copyEther() {
+						const copyText = document.getElementById("ether").textContent;
+						const textArea = document.createElement('textarea');
+						textArea.textContent = copyText;
+						document.body.append(textArea);
+						textArea.select();
+						document.execCommand("copy");
+						textArea.remove();
+					}
+				</script>
+
+				<h3><span>Bitcoin</span> : <code id="bitcoin" class="code">18dWgrjJrViK96x1DjQfkRNTfYRhuWfshd</code>
+				<br><span>Ether</span> : <code id="ether" class="code">0x5fEd61885108e2C8C6d5EAd7880E23aFb002595F</code></h3>
+				<div class="multi-button">
+					<button onclick="copyBitcoin()">Copy Bitcoin Adress</button>
+					<button onclick="copyEther()">Copy Ether Adress</button>             
+				</div>
 				<div class="padding-top3"></div>
 				<h4><br>Go back <a href="index.html">home</a>
 				<br>Go back <a href="index.html">home</a></h4>

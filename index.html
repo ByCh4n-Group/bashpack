@@ -94,9 +94,22 @@
 			<div class="padding-top6"></div><div class="hr-sm"></div><div class="padding-top6"></div>
 			<p>Simply past this line in your MacOs terminal or linux shell :</p>
 			<div class="padding-top4"></div>
-			<code><pre>  $  /bin/bash -c "$(curl -fsSL https://bashpack.me/pckg/install.sh)"</pre></code>
+			<script>
+				function copyInstallFunction() {
+					const copyText = document.getElementById("copyinstall").textContent;
+					const textArea = document.createElement('textarea');
+					textArea.textContent = copyText;
+					document.body.append(textArea);
+					textArea.select();
+					document.execCommand("copy");
+					textArea.remove();
+				}
+
+			</script>
+			<code><pre style="display: flex;">  $  <span style="color: var(--back);" id="copyinstall">/bin/bash -c "$(curl -fsSL https://bashpack.me/pckg/install.sh)"</span></pre></code>
+
 			<div class="multi-button btns">
-				<button>$Copy</button>
+				<button onclick="copyInstallFunction()">$copy</button>
 			</div>
 
 			<div class="padding-top7"></div>
@@ -120,7 +133,7 @@
 			<div class="padding-top7"></div>
 		</div>
 	</div>
-
+	
 	<script src="js/jquery-1.11.3.min.js" type="text/javascript"></script> 
 	<script src="js/plugins.js" type="text/javascript"></script> 
 	<script src="js/myjs.js" type="text/javascript"></script>

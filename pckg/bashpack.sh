@@ -45,9 +45,7 @@ while test $# -gt 0; do
   case "$1" in
 
 	-h|--help)
-		printf "\n"
 		printf "\e[0;92m✓ \e[0m\e[1;77mbashpack\e[0;96m [By @HadrienAka]\e[0m"
-		printf "\n"
 		printf "\n"
 		printf "\n\e[1;77mArguments :\e[0m"
 		printf "\n\e[1;92m-h, --help            \e[0m\e[1;77mShow brief help\e[0m"
@@ -56,17 +54,14 @@ while test $# -gt 0; do
 		printf "\n\e[1;92m-d, --delete          \e[0m\e[1;77mDelete packages\e[0m"
 		printf "\n\e[1;92m-s, --search          \e[0m\e[1;77mSearch packages\e[0m"
 		printf "\n\e[1;92m-rf                   \e[0m\e[1;77mDelete everythings (all packages and bashpack)\e[0m"
-
 		printf "\n"
-		printf "\n\e[0;92m? \e[0m\e[1;77mMore information\e[0;96m on the bashpack.me.\e[0m"
-		printf "\n\e[0;92m? \e[0m\e[1;77mDo you want to open it?\e[0;96m [y/n]\e[0m"
+		printf "\n\e[0;92m? \e[0m\e[1;77mMore information on\e[0;96m bashpack.me.\e[0m"
+		printf "\n\e[0;92m? \e[0m\e[1;77mDo you want to open it?\e[0;96m [y/n] \e[0m"
 		read -r -n1 yn
 		if [[ $yn == y ]]; then
 			open https://bashpack.me/
-			echo
 		fi
-		echo
-	  exitt
+		exitt
 	  ;;
 	  
 	-i|--install)
@@ -196,14 +191,18 @@ case "$option" in
 		echo "$update" | tr '[:upper:]' '[:lower:]'
 		versionpckgup=$(curl -s https://bashpack.me/pckg/$update | grep "#### Version//:" | sed 's/#### Version\/\/: //')
 		versionpckg=$(cat ~/.bashpack/$update | grep "#### Version//:" | sed 's/#### Version\/\/: //')
-
-		if [[ $versionpckg != "$versionpckgup" ]]; then 
-			printf "\n\e[0;91mx \e[0m\e[1;77mThere is a new $update update, \e[0;96m wait.\e[0m"
-			curl -s https://bashpack.me/pckg/"$update" > ~/.bashpack/"$update"
-			printf "\n\e[0;92m✓ \e[0m\e[1;77mSuccessfully Updated\e[0m"
+		if [ -z "$versionpckg" ]; then
+			if [[ $versionpckg != "$versionpckgup" ]]; then 
+				printf "\n\e[0;91mx \e[0m\e[1;77mThere is a new $update update, \e[0;96m wait.\e[0m"
+				curl -s https://bashpack.me/pckg/"$update" > ~/.bashpack/"$update"
+				printf "\n\e[0;92m✓ \e[0m\e[1;77mSuccessfully Updated\e[0m"
+			else
+				printf "\n\e[0;91mx \e[0m\e[1;77mNo update founded for $update.\e[0m"
+			fi
 		else
-			printf "\n\e[0;91mx \e[0m\e[1;77mNo update founded for $update.\e[0m"
+			printf "\n\e[0;91mx \e[0m\e[1;77mYou don't have any packages named $update.\e[0m"
 		fi
+		exitt
 	;;
 
 	4) ######## Search
@@ -221,9 +220,9 @@ case "$option" in
 			title=$(curl -s https://bashpack.me/pckg/$search | grep "#### Title//: " | sed 's/#### Title\/\/: //')
 
 			printf "\n\e[0;92m- \e[0m\e[0;77mTitle : \e[1;96m$title\e[0m\e[0m"
-			printf "\n\e[0;92m- \e[0m\e[0;77mAuthor : \e[0m\e[1;77m$author\e[0m\e[0m"
+			printf "\n\e[0;92m- \e[0m\e[0;77mAuthor : \e[0m\e[0;77m$author\e[0m\e[0m"
 			printf "\n\e[0;92m- \e[0m\e[0;77mDescription : $desc\e[0m\e[0m"
-			printf "\n\n\e[0;92m- \e[0m\e[0;77mInstall : \e[0;96m\"bashpack -i $search\"\e[0m\e[0m"
+			printf "\n\n\e[0;92m+ \e[0m\e[0;77mInstall : \e[0;96mbashpack -i $search\e[0m\e[0m"
 			exitt
 
 		else

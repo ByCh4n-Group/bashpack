@@ -255,6 +255,10 @@ h1 {
   }
 }
 
+span{
+  display: inline;
+}
+
 h2 {
   color: white;
   font-size: 200%;
