@@ -1,6 +1,5 @@
 #! /bin/bash
-
-printf "\r\n\e[0;92m- \e[0m\e[1;77mBashpack install\e[0m"
+printf "\e[0;92m- \e[0m\e[1;77mbashpack install\e[0m"
 tput sc
 printf "\r\n\e[0;92m? \e[0;96m#                          \e[0m"
 mkdir ~/.bashpack || ( printf "\n\e[0;91mx \e[0m\e[1;77mError\e[0m";exit )

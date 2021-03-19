@@ -35,7 +35,7 @@ empty () {
 	if [[ $version != "$versionup" ]]; then 
 		update
 	fi
-	printf "\n\e[0;92m? \e[0m\e[1;77mTo get help type :\e[0;96m bashpack -h\e[0m"
+	printf "\n\e[0;92m? \e[0m\e[1;77mfor help type :\e[0;96m bashpack -h\e[0m"
 	exitt
 }
 [ -z "$1" ] && empty
@@ -190,19 +190,19 @@ case "$option" in
 	3) ######## Update
 		update=$(echo "$update" | tr '[:upper:]' '[:lower:]')
 		versionpckgup=$(curl -s https://bashpack.me/pckg/$update | grep "#### Version//:" | sed 's/#### Version\/\/: //')
-		versionpckg=$(cat ~/.bashpack/$update | grep "#### Version//:" | sed 's/#### Version\/\/: //') > /dev/null 2>&1
+		versionpckg=$(cat ~/.bashpack/$update 2>/dev/null | grep "#### Version//:" | sed 's/#### Version\/\/: //')
 		if [ -z "$versionpckgup" ]; then
 			printf "\e[0;91mx \e[0m\e[1;77m$search not found on bashback.me    \e[0m"
 		else
 			if [ -z "$versionpckg" ]; then
-				printf "\n\e[0;91mx \e[0m\e[1;77mYou don't have any packages named $update.\e[0m"
+				printf "\e[0;91mx \e[0m\e[1;77mYou don't have any packages named $update.\e[0m"
 			else
 				if [[ $versionpckg != "$versionpckgup" ]]; then 
 					printf "\n\e[0;91mx \e[0m\e[1;77mThere is a new $update update, \e[0;96m wait..\e[0m"
 					curl -s https://bashpack.me/pckg/"$update" > ~/.bashpack/"$update" || ( printf "\n\e[0;91mx \e[0m\e[1;77mError\e[0m";exitt )
 					printf "\n\e[0;92m✓ \e[0m\e[1;77mSuccessfully Updated\e[0m"
 				else
-					printf "\n\e[0;91mx \e[0m\e[1;77mNo update founded for $update.\e[0m"
+					printf "\e[0;91mx \e[0m\e[1;77mNo update founded for $update.\e[0m"
 				fi
 			fi
 		fi
@@ -223,10 +223,10 @@ case "$option" in
 			desc=$(curl -s https://bashpack.me/pckg/$search | grep "#### Description//: " | sed 's/#### Description\/\/: //')
 			title=$(curl -s https://bashpack.me/pckg/$search | grep "#### Title//: " | sed 's/#### Title\/\/: //')
 
-			printf "\n\e[0;92m- \e[0m\e[1;77mTitle \e[0m\e[0;77m: \e[1;96m$title\e[0m\e[0m"
-			printf "\n\e[0;92m- \e[0m\e[1;77mAuthor \e[0m\e[0;77m: \e[0m\e[0;77m$author\e[0m\e[0m"
-			printf "\n\e[0;92m- \e[0m\e[1;77mDescription \e[0m\e[0;77m: $desc\e[0m\e[0m"
-			printf "\n\n\e[0;92m+ \e[0m\e[1;77mInstall \e[0m\e[0;77m: \e[0;96mbashpack -i $search\e[0m\e[0m"
+			printf "\n\e[0;92m- \e[0m\e[1;77mtitle\e[0m\e[0;77m: \e[1;96m$title\e[0m\e[0m"
+			printf "\n\e[0;92m- \e[0m\e[1;77mauthor\e[0m\e[0;77m: \e[0m\e[0;77m$author\e[0m\e[0m"
+			printf "\n\e[0;92m- \e[0m\e[1;77mdescription\e[0m\e[0;77m: $desc\e[0m\e[0m"
+			printf "\n\n\e[0;92m+ \e[0m\e[1;77minstall\e[0m\e[0;77m: \e[0;96mbashpack -i $search\e[0m\e[0m"
 			exitt
 
 		else
@@ -237,7 +237,7 @@ case "$option" in
 	;;
 
 	5) ######## Delete Everything
-		printf "\n\e[0;92m? \e[0m\e[1;77mYou will remove bashpack and all pckgs\e[0m"
+		printf "\e[0;92m? \e[0m\e[1;77mYou will remove bashpack and all pckgs\e[0m"
 		printf "\n\e[0;92m? \e[0m\e[1;77mAre you sure?\e[0;96m [y/n]\e[0m"
 		read -r -n1 yn
 		if [[ $yn == y ]]; then
