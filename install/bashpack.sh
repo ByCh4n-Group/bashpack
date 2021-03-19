@@ -33,7 +33,7 @@ update(){
 
 ############# Check version when no args
 empty () {
-	versionup=$(curl -s https://bashpack.me/install/bashpack.sh | grep "version=" | sed 's/version=//')
+	versionup=$(curl -s https://bashpack.me/install/bashpack.sh | grep "version=" | sed 's/version=//' | sed '1q;d')
 	printf "\e[0;92m✓ \e[0m\e[1;77mbashpack\e[0;96m [v%s]\e[0m" "$version"
 	update
 	printf "\n\e[0;92m? \e[0m\e[1;77mTo get help type :\e[0;96m bashpack -h\e[0m"
@@ -112,13 +112,13 @@ while test $# -gt 0; do
 		option=3
 		if test $# -gt 0; then
 			export update=$1
-				versionup=$(curl -s https://bashpack.me/install/bashpack.sh | grep "version=" | sed 's/version=//')
+				versionup=$(curl -s https://bashpack.me/install/bashpack.sh | grep "version=" | sed 's/version=//' | sed '1q;d')
 				if [[ $version != "$versionup" ]]; then 
 					printf "\n\e[0;91mx \e[0m\e[1;77mThere is a new bashpack update, \e[0;96m wait..\e[0m"
 					update
 				fi
 		else
-			versionup=$(curl -s https://bashpack.me/install/bashpack.sh | grep "version=" | sed 's/version=//')
+			versionup=$(curl -s https://bashpack.me/install/bashpack.sh | grep "version=" | sed 's/version=//' | sed '1q;d')
 			if [[ $version == "$versionup" ]]; then 
 				printf "\e[0;92m✓ \e[0m\e[1;77mbashpack is already up to date\e[0m"
 				echo
