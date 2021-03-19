@@ -33,7 +33,7 @@ update(){
 
 ############# Check version when no args
 empty () {
-	upversion=$(curl -s -L https://bashpack.me/install/version.txt) 
+	versionup=$(curl -s https://bashpack.me/install/bashpack.sh | grep "version=" | sed 's/version=//')
 	printf "\e[0;92m✓ \e[0m\e[1;77mbashpack\e[0;96m [v%s]\e[0m" "$version"
 	update
 	printf "\n\e[0;92m? \e[0m\e[1;77mTo get help type :\e[0;96m bashpack -h\e[0m"
@@ -112,13 +112,13 @@ while test $# -gt 0; do
 		option=3
 		if test $# -gt 0; then
 			export update=$1
-				upversion=$(curl -s -L https://bashpack.me/install/version.txt) 
+				versionup=$(curl -s https://bashpack.me/install/bashpack.sh | grep "version=" | sed 's/version=//')
 				if [[ $version != "$upversion" ]]; then 
 					printf "\n\e[0;91mx \e[0m\e[1;77mThere is a new bashpack update, \e[0;96m wait..\e[0m"
 					update
 				fi
 		else
-			upversion=$(curl -s -L https://bashpack.me/install/version.txt ) 
+			versionup=$(curl -s https://bashpack.me/install/bashpack.sh | grep "version=" | sed 's/version=//')
 			if [[ $version == "$upversion" ]]; then 
 				printf "\e[0;92m✓ \e[0m\e[1;77mbashpack is already up to date\e[0m"
 				echo
@@ -202,31 +202,28 @@ case "$option" in
 	4) ######## Search
 
 		search=$(echo "$search" | tr '[:upper:]' '[:lower:]')
-		echo "Search a pckg is currently not available"
-
-		: '
 		tput sc
-		printf "\e[0;92m? \e[0m\e[1;77mSearching for \e[0;96m$search\e[0m...\e[0m"
-		searchs=$(curl -s -L https://bashpack.me/pckg/$search | grep "404")
+		printf "\e[0;92m? \e[0m\e[1;77mSearching for \e[0;96m$search\e[0m...             \e[0m"
+		searchs=$(curl -s https://bashpack.me/pckg/$search | grep "404")
 		
 		if [ -z "$searchs" ]; then
 			tput rc
-			title=$(curl | grep "title")
-			desc==$(curl | grep "desc")
-			author=$(curl | grep "author")
+			printf "\e[0;92m✓ \e[0m\e[1;77m$search found                          \e[0m\n"
+			author=$(curl -s https://bashpack.me/pckg/$search | grep "#### Author//: " | sed 's/#### Author\/\/: //')
+			desc=$(curl -s https://bashpack.me/pckg/$search | grep "#### Description//: " | sed 's/#### Description\/\/: //')
+			title=$(curl -s https://bashpack.me/pckg/$search | grep "#### Title//: " | sed 's/#### Title\/\/: //')
 
-			printf "\e[0;92m✓ \e[0m\e[1;77m$search found\e[0m\n"
-			printf "\n\n\e[0;92m- \e[0m\e[1;77mTitle : \e[0;96m$title\e[0m\e[0m"
-			printf "\n\e[0;92m- \e[0m\e[0;77mAuthor : $author\e[0m\e[0m"
+			printf "\n\e[0;92m- \e[0m\e[0;77mTitle : \e[1;96m$title\e[0m\e[0m"
+			printf "\n\e[0;92m- \e[0m\e[0;77mAuthor : \e[0m\e[1;77m$author\e[0m\e[0m"
 			printf "\n\e[0;92m- \e[0m\e[0;77mDescription : $desc\e[0m\e[0m"
-			printf "\n\e[0;92m- \e[0m\e[1;77mInstall : \e[0;96m\"bashpack -i $search\"\e[0m\e[0m"
+			printf "\n\n\e[0;92m- \e[0m\e[0;77mInstall : \e[0;96m\"bashpack -i $search\"\e[0m\e[0m"
 			exitt
 
 		else
 			tput rc
-			printf "\e[0;91mx \e[0m\e[1;77m$search not found\e[0m"
+			printf "\e[0;91mx \e[0m\e[1;77m$search not found                                 \e[0m"
 			exitt
-		fi '
+		fi 
 	;;
 
 	5) ######## Delete Everything
