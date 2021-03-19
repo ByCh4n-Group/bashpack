@@ -1,4 +1,5 @@
 # bashpack [v0.1]
+![bashpack](bashpack-img.png)
 #### A simple package manager,written in bash, and made for bash
 <p>More informations on https://bashpack.me/ </p>
 
