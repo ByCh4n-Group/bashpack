@@ -20,6 +20,9 @@
 #### 8. Alternative
 #### 9. Start bmenu
 ####
+#### Title//: bmenu
+#### Author//: HadrienAka
+#### Description//: Easily create your own menu, which uses the directional keys. Quickly add your title, options and commands and you're good to go!
 ###################### 1 - IF NO ARGUMENTS : CHECK FOR UPDATE, TYPE -H TO GET HELP
 version=1.1
 d=0
