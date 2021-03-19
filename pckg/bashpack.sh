@@ -55,7 +55,7 @@ while test $# -gt 0; do
 		printf "\n\e[1;92m-s, --search          \e[0m\e[1;77mSearch packages\e[0m"
 		printf "\n\e[1;92m-rf                   \e[0m\e[1;77mDelete everythings (all packages and bashpack)\e[0m"
 		printf "\n"
-		printf "\n\e[0;92m? \e[0m\e[1;77mMore information on\e[0;96m bashpack.me.\e[0m"
+		printf "\n\e[0;92m? \e[0m\e[1;77mMore information on\e[0;96m bashpack.me\e[0m"
 		printf "\n\e[0;92m? \e[0m\e[1;77mDo you want to open it?\e[0;96m [y/n] \e[0m"
 		read -r -n1 yn
 		if [[ $yn == y ]]; then
@@ -153,7 +153,7 @@ case "$option" in
 			curl -s https://bashpack.me/pckg/"$install" > ~/.bashpack/"$install"
 			chmod +x ~/.bashpack/"$install"
 			tput rc
-			printf "\e[0;92m✓ \e[0m\e[1;77m\e[0;96m$install successfully installed    \e[0m\e[0m"
+			printf "\e[0;92m✓ \e[0m\e[1;77m\e[0;96msuccessfully installed    \e[0m\e[0m"
 			exitt
 
 		else
@@ -177,7 +177,7 @@ case "$option" in
 			printf "\e[0;92m? \e[0m\e[1;77mDeleting \e[0;96m$delete\e[0m...       \e[0m"
 			rm -rf ~/.bashpack/$delete
 			tput rc
-			printf "\e[0;92m✓ \e[0m\e[1;77m\e[0;96m$delete successfully deleted     \e[0m\e[0m"
+			printf "\e[0;92m✓ \e[0m\e[1;77m\e[0;96msuccessfully deleted     \e[0m\e[0m"
 			exitt
 
 		else
@@ -188,19 +188,23 @@ case "$option" in
 	;;
 
 	3) ######## Update
-		echo "$update" | tr '[:upper:]' '[:lower:]'
+		update=$(echo "$update" | tr '[:upper:]' '[:lower:]')
 		versionpckgup=$(curl -s https://bashpack.me/pckg/$update | grep "#### Version//:" | sed 's/#### Version\/\/: //')
-		versionpckg=$(cat ~/.bashpack/$update | grep "#### Version//:" | sed 's/#### Version\/\/: //')
-		if [ -z "$versionpckg" ]; then
-			if [[ $versionpckg != "$versionpckgup" ]]; then 
-				printf "\n\e[0;91mx \e[0m\e[1;77mThere is a new $update update, \e[0;96m wait.\e[0m"
-				curl -s https://bashpack.me/pckg/"$update" > ~/.bashpack/"$update"
-				printf "\n\e[0;92m✓ \e[0m\e[1;77mSuccessfully Updated\e[0m"
-			else
-				printf "\n\e[0;91mx \e[0m\e[1;77mNo update founded for $update.\e[0m"
-			fi
+		versionpckg=$(cat ~/.bashpack/$update | grep "#### Version//:" | sed 's/#### Version\/\/: //') > /dev/null 2>&1
+		if [ -z "$versionpckgup" ]; then
+			printf "\e[0;91mx \e[0m\e[1;77m$search not found on bashback.me    \e[0m"
 		else
-			printf "\n\e[0;91mx \e[0m\e[1;77mYou don't have any packages named $update.\e[0m"
+			if [ -z "$versionpckg" ]; then
+				printf "\n\e[0;91mx \e[0m\e[1;77mYou don't have any packages named $update.\e[0m"
+			else
+				if [[ $versionpckg != "$versionpckgup" ]]; then 
+					printf "\n\e[0;91mx \e[0m\e[1;77mThere is a new $update update, \e[0;96m wait..\e[0m"
+					curl -s https://bashpack.me/pckg/"$update" > ~/.bashpack/"$update" || ( printf "\n\e[0;91mx \e[0m\e[1;77mError\e[0m";exitt )
+					printf "\n\e[0;92m✓ \e[0m\e[1;77mSuccessfully Updated\e[0m"
+				else
+					printf "\n\e[0;91mx \e[0m\e[1;77mNo update founded for $update.\e[0m"
+				fi
+			fi
 		fi
 		exitt
 	;;
@@ -219,10 +223,10 @@ case "$option" in
 			desc=$(curl -s https://bashpack.me/pckg/$search | grep "#### Description//: " | sed 's/#### Description\/\/: //')
 			title=$(curl -s https://bashpack.me/pckg/$search | grep "#### Title//: " | sed 's/#### Title\/\/: //')
 
-			printf "\n\e[0;92m- \e[0m\e[0;77mTitle : \e[1;96m$title\e[0m\e[0m"
-			printf "\n\e[0;92m- \e[0m\e[0;77mAuthor : \e[0m\e[0;77m$author\e[0m\e[0m"
-			printf "\n\e[0;92m- \e[0m\e[0;77mDescription : $desc\e[0m\e[0m"
-			printf "\n\n\e[0;92m+ \e[0m\e[0;77mInstall : \e[0;96mbashpack -i $search\e[0m\e[0m"
+			printf "\n\e[0;92m- \e[0m\e[1;77mTitle \e[0m\e[0;77m: \e[1;96m$title\e[0m\e[0m"
+			printf "\n\e[0;92m- \e[0m\e[1;77mAuthor \e[0m\e[0;77m: \e[0m\e[0;77m$author\e[0m\e[0m"
+			printf "\n\e[0;92m- \e[0m\e[1;77mDescription \e[0m\e[0;77m: $desc\e[0m\e[0m"
+			printf "\n\n\e[0;92m+ \e[0m\e[1;77mInstall \e[0m\e[0;77m: \e[0;96mbashpack -i $search\e[0m\e[0m"
 			exitt
 
 		else
