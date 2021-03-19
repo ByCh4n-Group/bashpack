@@ -71,8 +71,10 @@
 	<div class="padding-top2"></div>
 
 	<div class="form-continer">
-		<form name="contact" action="/success.html" data-netlify="true">
-
+		<form name="contact" action="/success.html" data-netlify-recaptcha="true" netlify-honeypot="bot-field" data-netlify="true">
+			<p class="hidden">
+				<label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+			  </p>
 			<div class="group">      
 				<input name="username" type="text" autocomplete="off" required>
 				<span class="bar"></span>
@@ -88,31 +90,39 @@
 			<div class="group">      
 				<input name="pckgname" type="text" autocomplete="off" required>
 				<span class="bar"></span>
-				<label>$pckg-name</label>
+				<label>$pckg_name</label>
 			</div>
 
 			<div class="group">      
-				<textarea name="description" type="text" autocomplete="off" required></textarea>
+				<textarea name="quick_description" type="text" autocomplete="off" required></textarea>
 				<span class="bar"></span>
-				<label>$description</label>
+				<label>$quick_description</label>
+			</div>
+
+			<div class="group">      
+				<textarea name="informations" type="text" autocomplete="off" required></textarea>
+				<span class="bar"></span>
+				<label>$informations</label>
 			</div>
 
 			<div class="group">      
 				<div class="file-upload">
 					<div class="image-upload-wrap">
-						<input name="file" class="file-upload-input" type='file' onchange="readURL(this);" required>
+						<input name="file" class="file-upload-input" type='file' onchange="readURL(this);" multiple required>
 						<div class="drag-text">
 						<h3>Drag&drop or Click for browse</h3>
 						</div>
 					</div>
 					<div class="file-upload-content">
 						<div class="image-title-wrap">
-						<button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title"></span></button>
+						<button type="button" onclick="removeUpload()" class="remove-image">Remove Everythings</button>
 						</div>
 					</div>
 				</div>
 			</div>
-
+			
+			<div data-netlify-recaptcha="true"></div>
+			
 			<div class="text-center multi-button">
 				<button type="submit">Send</button>
 			</div>
