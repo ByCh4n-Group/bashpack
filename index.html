@@ -58,13 +58,12 @@
 		</ul>
 	</div>
 
-	<div id="home">
-		<div class="container">
-			<div class="padding-top1"></div>
+	<div id="home" class="home">
+		<div class="container-home">
 			<h1 class="title"><mark><div class="text"></div></mark></h1>
-			<div class="padding-top3"></div>
+			<div class="padding-top10"></div>
 			<h2>A simple <span>package manager</span>,<br>written in <span>bash</span>, <br>and made for <span>bash</span>.</h2>
-			<div class="padding-top3"></div>
+			<div class="padding-top10"></div>
 			<hr style="margin: auto;" class="hr-sm">
 		</div>
 	</div>
@@ -103,13 +102,14 @@
 					textArea.select();
 					document.execCommand("copy");
 					textArea.remove();
+					document.getElementById("button").childNodes[0].nodeValue="$done";
 				}
 
 			</script>
 			<code><pre style="display: flex;">  $  <span style="color: var(--back);" id="copyinstall">/bin/bash -c "$(curl -fsSL https://bashpack.me/pckg/install.sh)"</span></pre></code>
 
 			<div class="multi-button btns">
-				<button onclick="copyInstallFunction()">$copy</button>
+				<button id="button" onclick="copyInstallFunction()">$copy</button>
 			</div>
 
 			<div class="padding-top7"></div>
@@ -122,8 +122,8 @@
 
 			<h3>How it <span>works</span> ?</h3>
 			<div class="padding-top6"></div><div class="hr-sm"></div><div class="padding-top6"></div>
-			<p><code class="code">bashpack [args] [Pckg Name]</code><br><br></p>
-
+			<code><pre style="text-align: left;"> bashpack [args] [Pckg Name]</pre></code>
+			<div class="padding-top6"></div>
 			<code><pre style="text-align: left;"> bashpack -i $pckg-name # Install a pckg
  bashpack -d $pckg-name # Delete a pckg
  bashpack -u $pckg-name # Check/Update

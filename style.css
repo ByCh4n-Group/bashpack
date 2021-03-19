@@ -23,6 +23,7 @@
   box-sizing: border-box;
 }
 
+h
 html {
     scroll-behavior: smooth;
 }
@@ -79,6 +80,10 @@ padding-top: 70px;
   padding-top: 110px;
 }
 
+.padding-top10{
+  padding-top: 40px;
+}
+
 span {
   color: var(--blackblue);
 }
@@ -130,10 +135,6 @@ pre span:before {
 /*--------------------- HEADER ---------------------*/
 
 header {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: center;
   height: 100vh;
 }
 
@@ -322,6 +323,66 @@ textarea {
 }
 
 /*--------------------- CONTAINER ---------------------*/
+.home {
+  margin: 0;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.home h2{
+  font-size: 50px;
+}
+.home h1{
+  font-size: 120px;
+}
+@media only screen and (max-width: 2000px) {
+  .home h2{
+    font-size: 40px;
+  }
+  .home h1{
+    font-size: 100px;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .home h2{
+    font-size: 35px;
+  }
+  .home h1{
+    font-size: 100px;
+  }
+}
+@media only screen and (max-width: 890px) {
+  .home h2{
+    font-size: 32px;
+  }
+  .home h1{
+    font-size: 80px;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .home h1{
+    font-size: 70px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .home h2{
+    font-size: 27px;
+  }
+  .home h1{
+    font-size: 53px;
+  }
+}
+
+.container-home {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+}
+
 
 .container{
   position: relative;
