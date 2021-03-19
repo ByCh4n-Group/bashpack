@@ -70,7 +70,7 @@ while test $# -gt 0; do
 		if test $# -gt 0; then
 			export install=$1
 		else
-			printf "\n\e[0;91mx \e[0m\e[1;77mError\e[0m"
+			printf "\e[0;91mx \e[0m\e[1;77mError\e[0m"
 			exitt
 	  	fi
 	shift
@@ -82,7 +82,7 @@ while test $# -gt 0; do
 		if test $# -gt 0; then
 			export delete=$1
 		else
-			printf "\n\e[0;91mx \e[0m\e[1;77mError\e[0m"
+			printf "\e[0;91mx \e[0m\e[1;77mError\e[0m"
 			exitt
 		fi
 	shift
@@ -94,7 +94,7 @@ while test $# -gt 0; do
 		if test $# -gt 0; then
 			export search=$1
 		else
-			printf "\n\e[0;91mx \e[0m\e[1;77mError\e[0m"
+			printf "\e[0;91mx \e[0m\e[1;77mError\e[0m"
 			exitt
 		fi
 	shift
@@ -119,7 +119,6 @@ while test $# -gt 0; do
 			else
 				update
 			fi
-			exitt
 		fi
 	  shift
 	  ;;
@@ -171,9 +170,6 @@ case "$option" in
 		printf "\e[0;92m? \e[0m\e[1;77mSearching for \e[0;96m$delete\e[0m...      \e[0m"
 		if [ -f ~/.bashpack/$delete ]; then
 			tput rc
-			printf "\e[0;92m✓ \e[0m\e[1;77m$delete found                          \e[0m\n"
-			tput sc
-
 			printf "\e[0;92m? \e[0m\e[1;77mDeleting \e[0;96m$delete\e[0m...       \e[0m"
 			rm -rf ~/.bashpack/$delete
 			tput rc
