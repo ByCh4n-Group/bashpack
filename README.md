@@ -1,3 +1,4 @@
+![Bashpack](bashpack-img.png)
 # bashpack [v0.1]
 
 ### What does bashpack do ?
